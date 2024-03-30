@@ -3,43 +3,68 @@
 
 }
 
-.flex li {
+.flex>li {
     list-style-type: none;
-    width: 150px;
+    width: 100px;
+    font-size: 14px;
+}
+
+.flex>li>a:hover {
+    color: lightgray;
+}
+
+.flex li a {
+    color: white;
 }
 
 .flexEnd {
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
+
 }
 
 .dropdown {
     display: none;
+    /*不顯示*/
     width: 120px;
     position: absolute;
     z-index: 1;
     background-color: #cdb4db;
-    padding-top: 10px;
+
+    text-align: left;
 
 }
 
 .dropdown li {
-    margin-left: -30px;
-    height: 40px;
+    margin-left: -31px;
+    line-height: 30px;
+    height: 30px;
+    list-style-type: none;
+    width: 140px;
+    font-size: 14px;
 }
 
 .dropBtn {
     height: 40px;
-    margin-top: 19px;
+    text-align: center;
+    margin-top: 20px;
+
 }
+
+
 
 .dropBtn:hover .dropdown {
     display: block;
+    /*展示*/
+}
+
+.dropdown>li:hover {
+    background-color: #a07eb4;
 }
 
 header {
     display: flex;
-    background-color: #bde0fe;
+    background: linear-gradient(to bottom, #0942CE 0%, #246DB9 65%, #4f86ba 100%);
 }
 
 .container {
@@ -53,11 +78,19 @@ header {
 
 .w30pa {
     width: 30%;
+
 }
 
 .icon {
-    width: 50px;
+    width: 60px;
+    font-size: 30px;
+    
 }
+.icon a{
+    color: white;
+}
+
+
 
 .a2d2ff {
     background-color: #a2d2ff;
@@ -78,6 +111,7 @@ a {
     box-shadow: 5px 5px 15px -2px rgba(0, 0, 0, 0.72);
     border: 4px solid white;
     background-color: rgb(240, 238, 238);
+    transition: transform 0.3s
 }
 
 .news {
@@ -104,7 +138,108 @@ a {
     align-items: center;
     height: 55px;
 }
-.h100px{
+
+.h100px {
     height: 250px;
     margin: 8px;
+    
+    transition: filter 0.3s ease;
+    /* 添加过渡效果 */
+}
+
+
+.bk-blk {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* 设置半透明黑色背景 */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    /* 添加过渡效果 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 8px;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    height: 250px;
+    margin: 8px;
+}
+
+.image-overlay-text {
+    color: white;
+    font-size: 24px;
+}
+
+.image-container:hover .bk-blk {
+    opacity: 1;
+    /* 鼠标悬停时显示黑色背景和文字 */
+}
+.footer{
+    justify-content: center;
+    align-items: center;
+}
+.logoSize{
+    font-size: 30px;
+  
+}
+footer{
+    background-color: #42495d;
+   margin-top: 20px;
+}
+.contact{
+    margin: 19px;
+    border-left: 2px solid white;
+    padding: 5px;
+    
+}
+.ftCenter{
+    margin: 10px;
+    
+    color: white;
+}
+.introduce{
+    width: 50%;
+    margin: auto ;
+    text-align: center;
+    font-size: 15px;
+    color: aliceblue;
+   
+}
+h1{
+    font-size: 35px;
+   
+}
+article{
+    background-color: #2e3134;
+   height: 400px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   transition: 0.3s ease;
+}
+.more a{
+color: white;
+}
+.itdLine{
+
+    width: 90px;
+    border-top:1px solid white ;
+}
+.itd{
+    display: flex;
+    justify-content: center;
+    
+}
+#image{
+    opacity: 0;
+    transition: opacity 2s ease, transform 2s ease;
+    transform: translateY(50px);
 }

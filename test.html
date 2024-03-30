@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .image-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      opacity: 0; /* 初始时设置透明度为0 */
+      transition: opacity 1s ease, transform 1s ease; /* 添加过渡效果 */
+    }
+  </style>
+</head>
+<body>
+
+<div class="image-container">
+  <img src="img/index02.png" alt="Your Image" id="image">
+</div>
+
+<script>
+  window.addEventListener('load', () => {
+    const image = document.getElementById('image');
+
+    // 设置图片的透明度为1（完全显示）和定位效果
+    image.style.opacity = '1'; 
+    image.style.transform = 'translateY(0)'; // 设置定位效果，这里是不进行位移
+
+    // 可以根据需要添加其他定位效果，比如旋转、缩放等
+  });
+</script>
+
+</body>
+</html>
