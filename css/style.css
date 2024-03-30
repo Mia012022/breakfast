@@ -27,12 +27,10 @@
     display: none;
     /*不顯示*/
     width: 120px;
-    position: absolute;
     z-index: 1;
     background-color: #cdb4db;
-
     text-align: left;
-
+    
 }
 
 .dropdown li {
@@ -48,7 +46,9 @@
     height: 40px;
     text-align: center;
     margin-top: 20px;
-
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity 2s ease,transform 2s ease;
 }
 
 
@@ -63,7 +63,10 @@
 }
 
 header {
+    position: fixed;
     display: flex;
+    z-index: 1;
+    width: 100%;
     background: linear-gradient(to bottom, #0942CE 0%, #246DB9 65%, #4f86ba 100%);
 }
 
@@ -84,7 +87,9 @@ header {
 .icon {
     width: 60px;
     font-size: 30px;
-    
+    opacity: 0;
+    transition: opacity 2s ease,transform 2s ease;
+    transform: translateX(45px);
 }
 .icon a{
     color: white;
@@ -115,8 +120,8 @@ a {
 }
 
 .news {
-    height: 800px;
-    align-items: center;
+    height: 700px;
+    
     justify-content: space-around;
 }
 
@@ -242,4 +247,22 @@ color: white;
     opacity: 0;
     transition: opacity 2s ease, transform 2s ease;
     transform: translateY(50px);
+    
+}
+#logoimg{
+    opacity: 0;
+    transition: opacity 2s ease, transform 2s ease;
+    transform: translateX(-50px);
+}
+#newsTitle{
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    
+    
+    
 }

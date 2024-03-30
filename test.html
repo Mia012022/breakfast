@@ -2,36 +2,45 @@
 <html>
 <head>
   <style>
-    .image-container {
-      position: relative;
-      width: 300px;
-      height: 300px;
-      overflow: hidden;
+    body {
+      height: 2000px; /* 为了演示滚动效果，增加页面高度 */
     }
 
-    .image-container img {
-      max-width: 100%;
-      height: auto;
+    .image-container {
+      position: fixed;
+      bottom: -200px; /* 初始时将图片定位在页面底部外面 */
+      left: 50%; /* 水平居中 */
+      transform: translateX(-50%);
+      width: 300px;
+      height: 200px;
+      background-color: lightblue;
+      transition: opacity 0.5s ease, bottom 0.5s ease; /* 添加过渡效果 */
       opacity: 0; /* 初始时设置透明度为0 */
-      transition: opacity 1s ease, transform 1s ease; /* 添加过渡效果 */
     }
   </style>
 </head>
 <body>
 
-<div class="image-container">
-  <img src="img/index02.png" alt="Your Image" id="image">
-</div>
+<div class="image-container" id="image"></div>
 
 <script>
-  window.addEventListener('load', () => {
+  window.addEventListener('scroll', function() {
     const image = document.getElementById('image');
+    const scrollHeight = window.scrollY; // 获取页面滚动的高度
 
-    // 设置图片的透明度为1（完全显示）和定位效果
-    image.style.opacity = '1'; 
-    image.style.transform = 'translateY(0)'; // 设置定位效果，这里是不进行位移
+    // 计算图片出现的位置和移动位置（可根据实际情况调整）
+    const appearPosition = 500;
+    const moveDistance = 200;
 
-    // 可以根据需要添加其他定位效果，比如旋转、缩放等
+    // 根据滚动位置控制图片透明度和位置
+    if (scrollHeight > appearPosition) {
+      const opacity = (scrollHeight - appearPosition) / 200; // 按比例计算透明度
+      image.style.opacity = opacity > 1 ? 1 : opacity; // 设置图片的透明度，最大为1
+      image.style.bottom = `${-moveDistance + (scrollHeight - appearPosition)}px`; // 控制图片向上移动
+    } else {
+      image.style.opacity = 0; // 滚动位置未达到出现位置时，设置透明度为0
+      image.style.bottom = `${-moveDistance}px`; // 将图片定位在页面底部外面
+    }
   });
 </script>
 
