@@ -52,7 +52,9 @@
 }
 
 
-
+#image{
+    margin-top: 50px;
+}
 .dropBtn:hover .dropdown {
     display: block;
     /*展示*/
@@ -67,6 +69,7 @@ header {
     display: flex;
     z-index: 1;
     width: 100%;
+    top:0;
     background: linear-gradient(to bottom, #0942CE 0%, #246DB9 65%, #4f86ba 100%);
 }
 
