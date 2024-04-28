@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>下拉式選單</title>
+</head>
+<body>
+
+<select id="selectField" onchange="showFieldInfo()">
+    <option value="all">全部</option>
+    <option value="field1">欄位1</option>
+    <option value="field2">欄位2</option>
+</select>
+
+<div id="field1Info" style="display: none;">
+    欄位1的資訊
+</div>
+
+<div id="field2Info" style="display: none;">
+    欄位2的資訊
+</div>
+
+<script>
+function showFieldInfo() {
+    var selectedValue = document.getElementById("selectField").value;
+
+    document.getElementById("field1Info").style.display = "none";
+    document.getElementById("field2Info").style.display = "none";
+
+    if (selectedValue === "all") {
+        document.getElementById("field1Info").style.display = "block";
+        document.getElementById("field2Info").style.display = "block";
+    } else if (selectedValue === "field1") {
+        document.getElementById("field1Info").style.display = "block";
+    } else if (selectedValue === "field2") {
+        document.getElementById("field2Info").style.display = "block";
+    }
+}
+</script>
+
+</body>
+</html>

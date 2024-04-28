@@ -1,48 +1,128 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Two Column Page</title>
   <style>
-    body {
-      height: 2000px; /* 为了演示滚动效果，增加页面高度 */
+    .container {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      /* align-items: center; */
+
+
     }
 
-    .image-container {
-      position: fixed;
-      bottom: -200px; /* 初始时将图片定位在页面底部外面 */
-      left: 50%; /* 水平居中 */
-      transform: translateX(-50%);
-      width: 300px;
-      height: 200px;
-      background-color: lightblue;
-      transition: opacity 0.5s ease, bottom 0.5s ease; /* 添加过渡效果 */
-      opacity: 0; /* 初始时设置透明度为0 */
+    @media only screen and (max-width: 600px) {
+
+      body {
+        flex-direction: column;
+      }
+
+      .column {
+
+        width: 90%;
+
+      }
+    }
+
+    body {
+      background-image: url('/img/index10.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    .column {
+      width: 90%;
+      padding: 20px;
+      border: 1px solid #ccc;
+      margin: 5px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    h2 {
+      color: #666;
+    }
+
+    p {
+      color: #999;
     }
   </style>
 </head>
-<body>
 
-<div class="image-container" id="image"></div>
+<body>
+  <select id="selectField" onchange="showFieldInfo()">
+    <option value="all">全部</option>
+    <option value="field1">欄位1</option>
+    <option value="field2">欄位2</option>
+    <option value="field3">欄位3</option>
+  </select>
+  
+  <div id="fieldInfo" class="container">
+    <div class="column" id="field1Info" >
+      <h1>Column 1 Title</h1>
+      <h2>Column 1 Subtitle</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget semper mauris. Sed euismod, justo nec
+        ultricies ultricies, justo odio ultricies justo, nec ultricies justo odio nec justo.</p>
+    </div>
+    <div class="column" id="field2Info" >
+      <h1>Column 2 Title</h1>
+      <h2>Column 2 Subtitle</h2>
+      <p>Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum
+        imperdiet.</p>
+    </div>
+    <div class="column" id="field3Info" >
+      <h1>Column 3 Title</h1>
+      <h2>Column 3 Subtitle</h2>
+      <p>Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum
+        imperdiet.</p>
+    </div>
+  </div>
+
 
 <script>
-  window.addEventListener('scroll', function() {
-    const image = document.getElementById('image');
-    const scrollHeight = window.scrollY; // 获取页面滚动的高度
+  // function showFieldInfo() {
+  //   var selectedValue = document.getElementById("selectField").value;
 
-    // 计算图片出现的位置和移动位置（可根据实际情况调整）
-    const appearPosition = 500;
-    const moveDistance = 200;
+  //   document.getElementById("field1Info").style.display = "none";
+  //   document.getElementById("field2Info").style.display = "none";
+  //   document.getElementById("field3Info").style.display = "none";
 
-    // 根据滚动位置控制图片透明度和位置
-    if (scrollHeight > appearPosition) {
-      const opacity = (scrollHeight - appearPosition) / 200; // 按比例计算透明度
-      image.style.opacity = opacity > 1 ? 1 : opacity; // 设置图片的透明度，最大为1
-      image.style.bottom = `${-moveDistance + (scrollHeight - appearPosition)}px`; // 控制图片向上移动
+  //   if (selectedValue === "all") {
+  //       document.getElementById("field1Info").style.display = "block";
+  //       document.getElementById("field2Info").style.display = "block";
+  //       document.getElementById("field3Info").style.display = "block";
+  //   } else if (selectedValue === "field1") {
+  //       document.getElementById("field1Info").style.display = "block";
+  //   } else if (selectedValue === "field2") {
+  //       document.getElementById("field2Info").style.display = "block";
+  //   }else {
+  //     document.getElementById("field3Info").style.display = "block";
+
+  //   }
+  // }
+  function showFieldInfo() {
+    var selectedValue = document.getElementById("selectField").value;
+    var fieldIds = ["field1Info", "field2Info", "field3Info"];
+
+    fieldIds.forEach(function(fieldId) {
+        document.getElementById(fieldId).style.display = "none";
+    });
+
+    if (selectedValue === "all") {
+        fieldIds.forEach(function(fieldId) {
+            document.getElementById(fieldId).style.display = "block";
+        });
     } else {
-      image.style.opacity = 0; // 滚动位置未达到出现位置时，设置透明度为0
-      image.style.bottom = `${-moveDistance}px`; // 将图片定位在页面底部外面
+        document.getElementById(selectedValue + "Info").style.display = "block";
     }
-  });
+}
 </script>
-
 </body>
 </html>
