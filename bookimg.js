@@ -1,35 +1,26 @@
-const en = {
-    days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-    daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-    daysMin: ['Sun', 'Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat'],
-    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-    today: 'Today',
-    clear: 'Clear',
-    dateFormat: 'yyyy/MM/dd',
-    timeFormat: 'hh:mm aa',
-    firstDay: 0
-}
+let selectedButton = null;
 
-var minDate1 = new Date();
-var minDate2 = new Date();
-let x = minDate1.getDay();
-console.log(x);
-let week = ["週日", "週一", "週二", "週三", "週四", "週五", "週六"];
-console.log(week[x]);
-minDate1.setDate(minDate1.getDate() + 1);
-minDate2.setDate(minDate2.getDate() + 29);
-const datepicker = new AirDatepicker('#myDatepicker', {
-    locale: en, // Set language
-    firstDay: 1,
-    selectedDates: minDate1,
-    minDate: minDate1,//最小日期
-    maxDate: minDate2 //最大日期
+function selectButton(clickedButton) {
+  // 移除之前選擇的按鈕的紅框效果
+  if (selectedButton !== null) {
+    selectedButton.classList.remove('selected');
+  }
+  timeValue.innerText = clickedButton.innerText;
+  // 添加紅框效果到當前選擇的按鈕
+  clickedButton.classList.add('selected');
 
-})
-
-
-
-const printCurrentTime = () => {
-    console.log(datepicker.selectedDates) // print selected date
+  // 更新選擇的按鈕為當前按鈕
+  selectedButton = clickedButton;
 };
+
+function getValue(){
+
+    let adultNum = document.getElementById('adultNum');
+    let childNum = document.getElementById('childNum');
+    adultNumValue.innerText = adultNum.options[adultNum.selectedIndex].innerText;
+    childNumValue.innerText = childNum.options[childNum.selectedIndex].innerText;
+    dateValue.innerText = myDatepicker.value;
+};
+
+
+    

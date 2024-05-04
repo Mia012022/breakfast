@@ -9,7 +9,9 @@
     <title>Document</title>
 </head>
 <style>
-
+.selected {
+  border: 2px solid red; /* 添加紅色邊框 */
+}
 </style>
 
 <body>
@@ -19,7 +21,7 @@
     <p>選擇訂位時段</p>
     <p>用餐人數</p>
     <!-- 幾位大人 -->
-    <select name="" id="">
+    <select name="" id="adultNum" onchange="getValue()">
         <option disabled>請選擇用餐人數</option>
         <option value="1" data-testid="1位大人">1位大人</option>
         <option value="2" data-testid="2位大人">2位大人</option>
@@ -31,7 +33,7 @@
         <option value="8" data-testid="8位大人">8位大人</option>
     </select>
     <!-- 幾位小孩 -->
-    <select name="" id="">
+    <select name="" id="childNum" onchange="getValue()" >
         <option value="0" data-testid="0位小孩">0位小孩</option>
         <option value="1" data-testid="1位小孩">1位小孩</option>
         <option value="2" data-testid="2位小孩">2位小孩</option>
@@ -41,33 +43,33 @@
         <option value="6" data-testid="6位小孩">6位小孩</option>
     </select>
     <p>用餐日期</p>
-    <input id="myDatepicker">
-    <button onclick="printCurrentTime()">在Console印出目前時間</button>
+    <input id="myDatepicker" value="" >
+    
     <p>可接受 1-8 位訂位（含大人與小孩） * 超過 8 人的訂位，請使用電話預約<a href="tel:+886-2-2752-6998">02-2752-6998</a></p>
     <hr>
     <p>用餐時段</p>
     <div>
         <span>早上</span>
         <hr>
-        <button>09:00</button>
-        <button>10:00</button>
+        <button class="btnTime" onclick="selectButton(this)" >09:00</button>
+        <button class="btnTime" onclick="selectButton(this)">10:00</button>
     </div>
     <div><span>中午</span>
         <hr>
-        <button>12:00</button>
-        <button>13:00</button>
+        <button class="btnTime" onclick="selectButton(this)">12:00</button>
+        <button class="btnTime" onclick="selectButton(this)">13:00</button>
     </div>
     <div><span>下午</span>
         <hr>
-        <button>14:00</button>
-        <button>15:00</button>
-        <button>16:00</button>
+        <button class="btnTime" onclick="selectButton(this)">14:00</button>
+        <button class="btnTime" onclick="selectButton(this)">15:00</button>
+        <button class="btnTime" onclick="selectButton(this)">16:00</button>
     </div>
     <div><span>晚上</span>
         <hr>
-        <button>17:00</button>
-        <button>18:00</button>
-        <button>19:00</button>
+        <button class="btnTime" onclick="selectButton(this)">17:00</button>
+        <button class="btnTime" onclick="selectButton(this)">18:00</button>
+        <button class="btnTime" onclick="selectButton(this)">19:00</button>
     </div>
     <p>如有訂位以外的需求，請撥打電話與我們聯繫<br>
         <a href="tel:+886-2-2752-6998">02-2752-6998</a>
@@ -98,13 +100,45 @@
     </div>
     <!-- 確認預訂 -->
     你已選擇預訂Sarabeth's 台北敦化SOGO店
+    <span id="adultNumValue">1位大人</span>
+    <span id="childNumValue">0位小孩</span>
+    <span id="dateValue"></span>
+    <span id="timeValue"></span>
     <!-- Air datepicker JavaScript-->
     <script src="https://cdn.jsdelivr.net/npm/air-datepicker@3.3.5/air-datepicker.min.js"></script>
-    <script src="/bookimg.js"></script>
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/air-datepicker@3.3.5/air-datepicker.min.js"></script>
+    <script src="bookimg.js"></script>
 </body>
 
+<!-- js用餐日期 的月曆 -->
+<script>
+    const en = {
+        days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        daysMin: ['Sun', 'Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat'],
+        months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        today: 'Today',
+        clear: 'Clear',
+        dateFormat: 'yyyy/MM/dd',
+        timeFormat: 'hh:mm aa',
+        firstDay: 0
+    }
 
+    var minDate1 = new Date();
+    var minDate2 = new Date();
+    minDate1.setDate(minDate1.getDate() + 1);
+    minDate2.setDate(minDate2.getDate()+29);
+    let datepicker = new AirDatepicker('#myDatepicker', {
+        locale: en, // Set language
+        firstDay : 1,
+        minDate : minDate1,//最小日期
+        maxDate : minDate2 //最大日期
+       
+    })
+
+</script>
 
 
 
