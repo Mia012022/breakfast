@@ -19,8 +19,9 @@ function getValue(){
     let childNum = document.getElementById('childNum');
     adultNumValue.innerText = adultNum.options[adultNum.selectedIndex].innerText;
     childNumValue.innerText = childNum.options[childNum.selectedIndex].innerText;
-    dateValue.innerText = myDatepicker.value;
+   // dateValue.innerText = myDatepicker.value;
 };
+
 
 
     
